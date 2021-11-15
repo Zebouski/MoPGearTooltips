@@ -121,7 +121,7 @@ Zaz:SetScript("OnShow", function()
                             ini = i
                         end
                         count = count + 1
-                        data[count] = "+" .. defEx2[1] .. " Spell Power"
+                        data[count] = "+" .. defEx2[1] .. " Spell Damage"
                     end
                 end
                 if string.find(str, "Increases healing done by spells and effects by up to ", 1, true) then
@@ -132,7 +132,27 @@ Zaz:SetScript("OnShow", function()
                             ini = i
                         end
                         count = count + 1
-                        data[count] = "+" .. defEx2[1] .. " Healing Power"
+                        data[count] = "+" .. defEx2[1] .. " Healing Spells"
+                    end
+                end
+                if string.find(str, "Attack Power.", 1, true) then
+                    local defEx = Zaz.explode(Zaz.explode(str, " Attack Power.")[1], "Equip: +")
+                    if defEx[2] then
+                        if ini == 0 then
+                            ini = i
+                        end
+                        count = count + 1
+                        data[count] = "+" .. defEx[2] .. " Attack Power"
+                    end
+                end
+                if string.find(str, "mana per ", 1, true) then
+                    local defEx = Zaz.explode(Zaz.explode(str, " mana per ")[1], "Equip: Restores ")
+                    if defEx[2] then
+                        if ini == 0 then
+                            ini = i
+                        end
+                        count = count + 1
+                        data[count] = "+" .. defEx[2] .. " mana every 5 sec."
                     end
                 end
             end
@@ -152,6 +172,20 @@ Zaz:SetScript("OnShow", function()
                         originalData[j + insertPos - 1] = _G['GameTooltipTextLeft' .. j + insertPos - 1]:GetText()
                     end
                     break
+                end
+            end
+        end
+        if insertPos == 0 then
+            for i = 1, 30 do
+                local str = _G['GameTooltipTextLeft' .. i]:GetText()
+                if str then
+                    if string.find(str, "Classes", 1, true) then
+                        insertPos = i
+                        for j = 1, ini - insertPos do
+                            originalData[j + insertPos - 1] = _G['GameTooltipTextLeft' .. j + insertPos - 1]:GetText()
+                        end
+                        break
+                    end
                 end
             end
         end
