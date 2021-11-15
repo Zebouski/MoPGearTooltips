@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: TW Zaas Item Tooltips
+## Author: Xerron/Er
+## Version: 1.0.0.0
+## Notes: Old school green text
+TWZaasTooltips.lua
