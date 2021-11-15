@@ -113,26 +113,28 @@ Zaz:SetScript("OnShow", function()
                         data[count] = "+" .. defEx2[1] .. " Hit"
                     end
                 end
-                if string.find(str, "magical spells and effects by up to ", 1, true) then
-                    local defEx = Zaz.explode(str, "magical spells and effects by up to ")
-                    if defEx[2] then
-                        local defEx2 = Zaz.explode(defEx[2], '.')
-                        if ini == 0 then
-                            ini = i
-                        end
-                        count = count + 1
-                        data[count] = "+" .. defEx2[1] .. " Spell Damage"
+                if string.find(str, "spells and effects by up to ", 1, true) then
+                    local defEx = Zaz.explode(str, "spells and effects by up to ")
+                    local spellType = Zaz.explode(defEx[1], "Equip: Increases ")[2]
+                    local spellNewtip = ""
+                    if string.find(spellType, "damage", 1, true) then
+                       local spellDamageType = Zaz.explode(spellType, "damage done by")[2]
+                       if string.find(spellType, "magical", 1, true) then
+                          spellNewtip = " Spell Damage"
+                       else 
+                          spellNewtip = spellDamageType .. "Spell Damage"
+                       end
+                    else
+                        spellNewtip = " Healing Spells"
                     end
-                end
-                if string.find(str, "Increases healing done by spells and effects by up to ", 1, true) then
-                    local defEx = Zaz.explode(str, "Increases healing done by spells and effects by up to ")
+             
                     if defEx[2] then
                         local defEx2 = Zaz.explode(defEx[2], '.')
                         if ini == 0 then
                             ini = i
                         end
                         count = count + 1
-                        data[count] = "+" .. defEx2[1] .. " Healing Spells"
+                        data[count] = "+" .. defEx2[1] .. spellNewtip
                     end
                 end
                 if string.find(str, "Attack Power.", 1, true) then
