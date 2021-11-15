@@ -157,6 +157,28 @@ Zaz:SetScript("OnShow", function()
                         data[count] = "+" .. defEx[2] .. " mana every 5 sec."
                     end
                 end
+                if string.find(str, "critical strike with spells by ", 1, true) then
+                    local defEx = Zaz.explode(str, "critical strike with spells by ")
+                    if defEx[2] then
+                        local defEx2 = Zaz.explode(defEx[2], '.')
+                        if ini == 0 then
+                            ini = i
+                        end
+                        count = count + 1
+                        data[count] = "+" .. defEx2[1] .. " Spell Critical Strike"
+                    end
+                end
+                if string.find(str, "chance to hit with spells by ", 1, true) then
+                    local defEx = Zaz.explode(str, "chance to hit with spells by ")
+                    if defEx[2] then
+                        local defEx2 = Zaz.explode(defEx[2], '.')
+                        if ini == 0 then
+                            ini = i
+                        end
+                        count = count + 1
+                        data[count] = "+" .. defEx2[1] .. " Spell Hit"
+                    end
+                end
             end
 
         end
