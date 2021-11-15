@@ -43,7 +43,7 @@ Zaz:SetScript("OnShow", function()
 
         for i = 1, 30 do
 
-            if _G['GameTooltipTextLeft' .. i] and _G['GameTooltipTextLeft' .. i]:IsVisible() and _G['GameTooltipTextLeft' .. i]:GetText() then
+            if _G['GameTooltipTextLeft' .. i] and _G['GameTooltipTextLeft' .. i]:IsVisible() and _G['GameTooltipTextLeft' .. i]:GetText() and not string.find(_G['GameTooltipTextLeft' .. i]:GetText(), "Set") then
 
                 local str = _G['GameTooltipTextLeft' .. i]:GetText()
 
