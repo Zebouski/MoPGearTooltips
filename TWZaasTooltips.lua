@@ -168,6 +168,30 @@ Zaz:SetScript("OnShow", function()
                         data[count] = "+" .. defEx2[1] .. " Spell Critical Strike"
                     end
                 end
+                -- Ironbark Shield
+                if string.find(str, "chance to get a critical strike with Nature spells by ", 1, true) then
+                    local defEx = Zaz.explode(str, "chance to get a critical strike with Nature spells by ")
+                    if defEx[2] then
+                        local defEx2 = Zaz.explode(defEx[2], '.')
+                        if ini == 0 then
+                            ini = i
+                        end
+                        count = count + 1
+                        data[count] = "+" .. defEx2[1] .. " Nature Spell Critical Strike"
+                    end
+                end
+                -- Benediction
+                if string.find(str, "critical effect chance of your Holy spells by ", 1, true) then
+                    local defEx = Zaz.explode(str, "critical effect chance of your Holy spells by ")
+                    if defEx[2] then
+                        local defEx2 = Zaz.explode(defEx[2], '.')
+                        if ini == 0 then
+                            ini = i
+                        end
+                        count = count + 1
+                        data[count] = "+" .. defEx2[1] .. " Holy Spell Critical Strike"
+                    end
+                end
                 if string.find(str, "chance to hit with spells by ", 1, true) then
                     local defEx = Zaz.explode(str, "chance to hit with spells by ")
                     if defEx[2] then
