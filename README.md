@@ -14,3 +14,4 @@ Enchantments that are simple stats, are also brought into the standardized forma
 * Enchantments aren't fixed on gear that is otherwise already in standard format
 * \<Made By Player\> text can pop in late and temporarily revert the fixed tooltip
 * AuctionHouse listings, "Currently Equiped" comparisons, 3rd party addons like AtlasLoot, are all not currently hooked and modified by this addon
+* Profession Patterns that craft gear get all messed up
