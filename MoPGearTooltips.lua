@@ -214,7 +214,7 @@ function adjustTooltip(tooltip, tooltipTypeStr)
     findPos("Classes")
     end
     if insertPos == 0 then
-    findPos("Requires")
+    findPos("Requires Level")
     end
     if insertPos == 0 then
     findPos("Equip:")
