@@ -7,10 +7,10 @@ which leaves the special, out of the ordinary effects their proper chance to vis
 
 ![image](https://user-images.githubusercontent.com/11151284/184475717-f26752f0-42ca-4241-8e7d-c63ca69db73c.png)![image](https://user-images.githubusercontent.com/11151284/184475990-aa2a2526-c322-4f3c-9323-5dc83da1f726.png)
 
-
 Enchantments that are simple stats, are also brought into the standardized format while retaining their distinct green coloring.
 
 ## Known Issues
 * Enchantments aren't fixed on gear that is otherwise already in standard format
 * \<Made By Player\> text can pop in late and temporarily revert the fixed tooltip
 * AuctionHouse listings, "Currently Equiped" comparisons, 3rd party addons like AtlasLoot, are all not currently hooked and modified by this addon
+* Because GetText() on the tooltips doesn't let us read the original color, any text like Requires level 60 or Requires: Warrior that would be colored red if unfulfilled, is just colored white instead.

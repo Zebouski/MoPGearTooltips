@@ -217,6 +217,9 @@ function adjustTooltip(tooltip, tooltipTypeStr)
     findPos("Requires Level")
     end
     if insertPos == 0 then
+    findPos("—") -- emdash used only in rep reqs, like Requires The League of Arathor — Exalted
+    end
+    if insertPos == 0 then
     findPos("Equip:")
     end
 
