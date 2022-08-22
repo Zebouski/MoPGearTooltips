@@ -14,3 +14,4 @@ Enchantments that are simple stats, are also brought into the standardized forma
 * \<Made By Player\> text can pop in late and temporarily revert the fixed tooltip
 * AuctionHouse listings, "Currently Equiped" comparisons, 3rd party addons like AtlasLoot, are all not currently hooked and modified by this addon
 * Because GetText() on the tooltips doesn't let us read the original color, any text like Requires level 60 or Requires: Warrior that would be colored red if unfulfilled, is just colored white instead.
+* Stats in set bonuses are not converted to the new format
