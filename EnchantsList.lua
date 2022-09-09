@@ -21,7 +21,7 @@ TOOLTIP_ENCHANTS = {
   {"Attack Power +28/Dodge +1%", "+28 Attack Power\n+1% Dodge"},
   {"Ranged Attack Power +24/Stamina +10/Hit +1%", "+10 Stamina\n+24 Ranged Attack Power\n+1% Hit"},
   {"Healing and Spell Damage +13/Intellect +15", "+15 Intellect\n+13 Spell Power"},
-  {"Defense +7/Stamina +10/Healing Spells +24", "+10 Stamina\n+7 Defense\n/+24 Healing Spells"},
+  {"Defense +7/Stamina +10/Healing Spells +24", "+10 Stamina\n+7 Defense\n+24 Healing Spells"},
   {"Defense +7/Stamina +10/Block Value +15", "+10 Stamina\n+7 Defense\n+15 Block Value"},
   {"+18 Spell Damage and Healing", "+18 Spell Power"},
   {"Armor +10", "+10 Armor"},
