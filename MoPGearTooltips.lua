@@ -173,6 +173,11 @@ function adjustTooltip(tooltip, tooltipTypeStr)
                 " of the target's armor",
                 "Armor Penetration")
             searchReplace(str,
+                " of your Mana regeneration to continue while casting.",
+                "Equip: Allows ",
+                " of your Mana regeneration to continue while casting.",
+                "Casting Mana Regen")
+            searchReplace(str,
                 "Equip: Increases your attack and casting speed",
                 "Equip: Increases your attack and casting speed by ",
                 ".",
