@@ -133,6 +133,11 @@ function adjustTooltip(tooltip, tooltipTypeStr)
                 ".",
                 "Healing Spells")
             searchReplace(str,
+                " health per ",
+                "Equip: Restores ",
+                " health per ",
+                "health every 5 sec.")
+            searchReplace(str,
                 " mana per ",
                 "Equip: Restores ",
                 " mana per ",
