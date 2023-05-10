@@ -3,7 +3,7 @@ local _G, _ = _G or getfenv()
 local Cooltip = CreateFrame("Frame", "Cooltip", GameTooltip)
 
 TOOLTIP_COLOR_ENCHANT= "|cFF1EFF00" -- Green
-TOOLTIP_COLOR_BONUSSTAT = "|cFF71D5FF" -- Teal
+TOOLTIP_COLOR_BONUSSTAT = "|cFF71D5FF" -- Teal (0.44, 0.84, 1.0)
 
 function Cooltip.explode(str, delimiter)
     local result = {}
@@ -31,11 +31,11 @@ function adjustTooltip(tooltip, tooltipTypeStr)
         count = count + 1
     end
     local function searchReplace(str, searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr)
-        if string.find(str, searchStr, 1, true) then
-            local defEx = Cooltip.explode(Cooltip.explode(str, valueSuffixStr)[1], valuePrefixStr)
+        if string.find(str.text, searchStr, 1, true) then
+            local defEx = Cooltip.explode(Cooltip.explode(str.text, valueSuffixStr)[1], valuePrefixStr)
             if defEx[2] then
                 incrementMatch()
-                data[count] = TOOLTIP_COLOR_BONUSSTAT .. "+" .. defEx[2] .. " " .. newSuffixStr
+                data[count] = "+" .. defEx[2] .. " " .. newSuffixStr
             end
         end
     end
@@ -61,7 +61,10 @@ function adjustTooltip(tooltip, tooltipTypeStr)
         line = i
         if _G[tooltipTypeStr .. 'TextLeft' .. i] and _G[tooltipTypeStr .. 'TextLeft' .. i]:IsVisible() and _G[tooltipTypeStr .. 'TextLeft' .. i]:GetText() and not string.find(_G[tooltipTypeStr .. 'TextLeft' .. i]:GetText(), "Set") then
 
-            local str = _G[tooltipTypeStr .. 'TextLeft' .. i]:GetText()
+            local str = {}
+            str.text = _G[tooltipTypeStr .. 'TextLeft' .. i]:GetText()
+            str.color = {}
+            str.color.r, str.color.g, str.color.b, str.color.a = _G[tooltipTypeStr .. 'TextLeft' .. i]:GetTextColor()
 
             -- Tank Stats
             searchReplace(str,
@@ -193,6 +196,7 @@ function adjustTooltip(tooltip, tooltipTypeStr)
 
     -- find an insert position and save originalData
     local originalData = {}
+    originalData.colors = {}
     local insertPos = 0
 
     local function findPos(searchTerm)
@@ -207,7 +211,10 @@ function adjustTooltip(tooltip, tooltipTypeStr)
                 end
                 if stringFound then
                     for j = 1, ini - i do
-                        originalData[j + i - 1] = _G[tooltipTypeStr .. 'TextLeft' .. j + i - 1]:GetText()
+                        local entry = j + i - 1
+                        originalData[entry] = _G[tooltipTypeStr .. 'TextLeft' .. entry]:GetText()
+                        originalData.colors[entry] = {}
+                        originalData.colors[entry].r, originalData.colors[entry].g, originalData.colors[entry].b, originalData.colors[entry].a = _G[tooltipTypeStr .. 'TextLeft' .. entry]:GetTextColor()
                     end
                     insertPos = i
                     break
@@ -239,11 +246,13 @@ function adjustTooltip(tooltip, tooltipTypeStr)
         if string.find(originalData[i], "Equip:", 1, true)
                 or string.find(originalData[i], "Chance on hit:", 1, true)
                 or string.find(originalData[i], "Use:", 1, true) then
-            _G[tooltipTypeStr .. 'TextLeft' .. i + count]:SetText(TOOLTIP_COLOR_ENCHANT .. originalData[i])
+            _G[tooltipTypeStr .. 'TextLeft' .. i + count]:SetText(originalData[i])
+            _G[tooltipTypeStr .. 'TextLeft' .. i + count]:SetTextColor(originalData.colors[i].r, originalData.colors[i].g, originalData.colors[i].b, originalData.colors[i].a)
         elseif checkForText(TOOLTIP_ENCHANTS, originalData[i]) then
             _G[tooltipTypeStr .. 'TextLeft' .. i + count]:SetText(TOOLTIP_COLOR_ENCHANT .. substituteText(originalData[i], TOOLTIP_ENCHANTS))
         else
-            _G[tooltipTypeStr .. 'TextLeft' .. i + count]:SetText("|cFFffffff" .. originalData[i])
+            _G[tooltipTypeStr .. 'TextLeft' .. i + count]:SetText(originalData[i])
+            _G[tooltipTypeStr .. 'TextLeft' .. i + count]:SetTextColor(originalData.colors[i].r, originalData.colors[i].g, originalData.colors[i].b, originalData.colors[i].a)
         end
         _G[tooltipTypeStr .. 'TextLeft' .. i + count]:Show()
     end
@@ -251,6 +260,7 @@ function adjustTooltip(tooltip, tooltipTypeStr)
     -- insert new data to insert pos
     for i = 1, count do
         _G[tooltipTypeStr .. 'TextLeft' .. insertPos + i - 1]:SetText(data[i])
+        _G[tooltipTypeStr .. 'TextLeft' .. insertPos + i - 1]:SetTextColor(0.44, 0.84, 1.0)
         _G[tooltipTypeStr .. 'TextLeft' .. insertPos + i - 1]:Show()
     end
 
