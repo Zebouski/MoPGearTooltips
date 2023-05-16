@@ -108,6 +108,7 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
             for _, statSet in {
                 { stats=COOLTIP_PRIM_STATS,        color=COOLTIP_PRIM_STATS_COLOR },
                 { stats=COOLTIP_SEC_STATS.vanilla, color=COOLTIP_SEC_STATS_COLOR },
+                { stats=COOLTIP_SEC_STATS.turtle,  color=COOLTIP_SEC_STATS_COLOR },
             } do
                 -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
                 for _,stat in statSet.stats do
