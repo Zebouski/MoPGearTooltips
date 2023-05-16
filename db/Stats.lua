@@ -130,7 +130,7 @@ COOLTIP_SEC_STATS = {
     {
         " health per ",
         "Equip: Restores ",
-        " health Per 5 sec%.",
+        " health per 5 sec%.",
         "Health per 5s"
     },
     {
