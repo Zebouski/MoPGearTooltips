@@ -58,32 +58,32 @@ COOLTIP_SEC_STATS = {
   vanilla={
     -- Tank Stats
     {
-        "Equip: Increased Defense",
-        "Equip: Increased Defense %+",
+        "Increased Defense",
+        "Increased Defense %+",
         "%.",
         "Defense"
     },
     {
-        "Equip: Increases your chance to block attacks with a shield by ",
-        "Equip: Increases your chance to block attacks with a shield by ",
+        "Increases your chance to block attacks with a shield by ",
+        "Increases your chance to block attacks with a shield by ",
         "%.",
         "Block Chance"
     },
     {
-        "Equip: Increases the block value of your shield by ",
-        "Equip: Increases the block value of your shield by ",
+        "Increases the block value of your shield by ",
+        "Increases the block value of your shield by ",
         "%.",
         "Block Value"
     },
     {
-        "Equip: Increases your chance to dodge an attack by ",
-        "Equip: Increases your chance to dodge an attack by ",
+        "Increases your chance to dodge an attack by ",
+        "Increases your chance to dodge an attack by ",
         "%.",
         "Dodge"
     },
     {
-        "Equip: Increases your chance to parry an attack by ",
-        "Equip: Increases your chance to parry an attack by ",
+        "Increases your chance to parry an attack by ",
+        "Increases your chance to parry an attack by ",
         "%.",
         "Parry"
     },
@@ -91,33 +91,33 @@ COOLTIP_SEC_STATS = {
     -- DPS Stats
     {
         " Attack Power.",
-        "Equip: %+",
+        "%+",
         " Attack Power%.",
         "Attack Power"
     },
     {
-        "Equip: Improves your chance to get a critical strike by ",
-        "Equip: Improves your chance to get a critical strike by ",
+        "Improves your chance to get a critical strike by ",
+        "Improves your chance to get a critical strike by ",
         "%.",
         "Critical Strike"
     },
     {
-        "Equip: Improves your chance to hit by ",
-        "Equip: Improves your chance to hit by ",
+        "Improves your chance to hit by ",
+        "Improves your chance to hit by ",
         "%.",
         "Hit"
     },
 
     -- Caster Stats
     {
-        "Equip: Increases damage and healing done by magical spells and effects by up to ",
-        "Equip: Increases damage and healing done by magical spells and effects by up to ",
+        "Increases damage and healing done by magical spells and effects by up to ",
+        "Increases damage and healing done by magical spells and effects by up to ",
         "%.",
         "Spell Power"
     },
     {
-        "Equip: Increases healing done by spells and effects by up to ",
-        "Equip: Increases healing done by spells and effects by up to ",
+        "Increases healing done by spells and effects by up to ",
+        "Increases healing done by spells and effects by up to ",
         "%.",
         "Spell Healing"
     },
@@ -129,65 +129,72 @@ COOLTIP_SEC_STATS = {
     },
     {
         " health per ",
-        "Equip: Restores ",
+        "Restores ",
         " health per 5 sec%.",
         "Health per 5s"
     },
     {
         " mana per ",
-        "Equip: Restores ",
+        "Restores ",
         " mana per 5 sec%.",
         "Mana Per 5s"
     },
     {
-        "Equip: Improves your chance to get a critical strike with spells by ",
-        "Equip: Improves your chance to get a critical strike with spells by ",
+        "Improves your chance to get a critical strike with spells by ",
+        "Improves your chance to get a critical strike with spells by ",
         "%.",
         "Spell Critical Strike"
     },
     {
-        "Equip: Improves your chance to hit with spells by ",
-        "Equip: Improves your chance to hit with spells by ",
+        "Improves your chance to hit with spells by ",
+        "Improves your chance to hit with spells by ",
         "%.",
         "Spell Hit"
     },
     {
-        "Equip: Decreases the magical resistances of your spell targets by ",
-        "Equip: Decreases the magical resistances of your spell targets by ",
+        "Decreases the magical resistances of your spell targets by ",
+        "Decreases the magical resistances of your spell targets by ",
         "%.",
         "Spell Penetration"
     },
     -- Ironbark Shield
     {
-        "Equip: Improves your chance to get a critical strike with Nature spells by ",
-        "Equip: Improves your chance to get a critical strike with Nature spells by ",
+        "Improves your chance to get a critical strike with Nature spells by ",
+        "Improves your chance to get a critical strike with Nature spells by ",
         "%.",
         "Nature Spell Critical Strike"
     },
+    -- Priest T1
+    {
+        "Improves your chance to get a critical strike with Holy spells by ",
+        "Improves your chance to get a critical strike with Holy spells by ",
+        "%.",
+        "Holy Spell Critical Strike"
+    },
     -- Benediction
     {
-        "Equip: Increases the critical effect chance of your Holy spells by ",
-        "Equip: Increases the critical effect chance of your Holy spells by ",
+        "Increases the critical effect chance of your Holy spells by ",
+        "Increases the critical effect chance of your Holy spells by ",
         "%.",
         "Holy Spell Critical Strike"
     },
   },
   turtle={
     {
-        "Equip: Your attacks ignore ",
-        "Equip: Your attacks ignore ",
+        "Your attacks ignore ",
+        "Your attacks ignore ",
         " of the target's armor",
         "Armor Penetration"
     },
     {
         " of your Mana regeneration to continue while casting.",
-        "Equip: Allows ",
+        "Allows ",
         " of your Mana regeneration to continue while casting.",
         "Casting Mana Regen"
     },
     {
-        "Equip: Increases your attack and casting speed",
-        "Equip: Increases your attack and casting speed by ",
+        "Increases your attack and casting speed",
+        "Increases your attack and casting speed by ",
         "%.",
         "Haste"
     },
@@ -205,8 +212,8 @@ end
 
 for _,school in pairs( { "Nature", "Frost", "Fire", "Arcane", "Shadow", "Holy" } ) do
     table.insert(COOLTIP_SEC_STATS.vanilla, {
-        "Equip: Increases damage done by " .. school .. " spells and effects by up to ",
-        "Equip: Increases damage done by " .. school .. " spells and effects by up to ",
+        "Increases damage done by " .. school .. " spells and effects by up to ",
+        "Increases damage done by " .. school .. " spells and effects by up to ",
         "%.",
         school .. " Spell Damage"
     })
@@ -214,8 +221,8 @@ end
 
 for _,weapon in pairs( { "Swords", "Two-handed Swords", "Axes", "Two-handed Axes", "Maces", "Two-handed Maces", "Daggers", "Fist Weapons", "Polearms", "Staves", "Fishing" } ) do
     table.insert(COOLTIP_SEC_STATS.vanilla, {
-        "Equip: Increased " .. weapon .. " +",
-        "Equip: Increased " .. weapon .. " %+",
+        "Increased " .. weapon .. " +",
+        "Increased " .. weapon .. " %+",
         "%.",
         weapon .. " Skill"
     })

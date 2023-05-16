@@ -116,6 +116,7 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
                         local suffixRemoved = string.gsub(originalTooltip[row].text, stat[3], "")
                         local foundValue = string.gsub(suffixRemoved, stat[2], "")
                         if foundValue then
+                            foundValue = string.gsub(foundValue, "Equip: ", "")
                             table.insert(fixedTooltips, {
                                 text="+" .. foundValue .. " " .. stat[4],
                                 color=statSet.color,
@@ -160,20 +161,39 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
         return
     end
 
-    -- TODO:
---     Get all stats
---     Correct setbonus lines
---     Insert data from start to end row
-
---     setbonuses.StartRow = 5
---     setbonuses.Length = 0
---
---     for row = setbonuses.StartRow, setbonuses.StartRow + setbonuses.Length - 1 do
---         _G[tooltipTypeStr .. 'TextLeft' .. row]:SetText("penis")
---         _G[tooltipTypeStr .. 'TextLeft' .. row]:SetTextColor(0.44, 0.84, 1.0)
---         _G[tooltipTypeStr .. 'TextLeft' .. row]:Show()
---     end
---     tooltip:Show()
+    -- Analize set bonuses rows for problems, fix them, and make the change
+    -- all in one go since we don't need to rearrange any lines here, they are in proper order.
+    -- A repeat of code above, but compacted and with checks only relevant for sets
+    -- Could use refactor
+    for row = setbonuses.StartRow, stats.OrigLength do
+        for _, statSet in {
+                { stats=COOLTIP_PRIM_STATS,        color=COOLTIP_PRIM_STATS_COLOR },
+                { stats=COOLTIP_SEC_STATS.vanilla, color=COOLTIP_SEC_STATS_COLOR },
+        } do
+            -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
+            for _,stat in statSet.stats do
+                if string.find(originalTooltip[row].text, stat[1], 1, true) then
+                    local suffixRemoved = string.gsub(originalTooltip[row].text, stat[3], "")
+                    local foundValue = string.gsub(suffixRemoved, stat[2], "")
+                    if foundValue then
+                        local setPrefix = ""
+                        local statStart, foundValueStart = string.find(foundValue, "Set: ", 1, true)
+                        setPrefix = string.sub(foundValue, 1, foundValueStart)
+                        foundValue = string.gsub(foundValue, ".*Set: ", "")
+                        foundValue = string.gsub(foundValue, "%.", "") -- There are an awful amount of set bonuses with random ass periods wtf
+                        _G[tooltipTypeStr .. 'TextLeft' .. row]:SetText(
+                            setPrefix .. "+" .. foundValue .. " " .. stat[4])
+                        _G[tooltipTypeStr .. 'TextLeft' .. row]:SetTextColor(
+                            originalTooltip[row].color.r,
+                            originalTooltip[row].color.g,
+                            originalTooltip[row].color.b,
+                            originalTooltip[row].color.a)
+                        _G[tooltipTypeStr .. 'TextLeft' .. row]:Show()
+                    end
+                end
+            end
+        end
+    end
 end
 
 function Cooltip.parseEnchant(row)
