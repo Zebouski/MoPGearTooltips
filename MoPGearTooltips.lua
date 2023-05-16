@@ -6,7 +6,7 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
     local stats = {}
     local setbonuses = {}
 
---     Collect all rows into lua table for analization
+    -- Collect all rows into lua table for analization
     local originalTooltip = {}
     for row = 1, 30 do
         local rowtext = _G[tooltipTypeStr .. 'TextLeft' .. row]:GetText()
@@ -22,8 +22,8 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
         end
     end
 
---     Find out if the tooltip we're looking at is a piece of gear
---     and what row the stats we want to edit start at
+    -- Find out if the tooltip we're looking at is a piece of gear
+    -- and what row the stats we want to edit start at
     stats.OrigLength = table.getn(originalTooltip)
     stats.StartRow = 0
     stats.EndRow = 0
@@ -31,6 +31,7 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
     local isGear = false
 
     for row = 1, stats.OrigLength do
+        -- Gear is guaranteed to be labeled with the slot it occupies.
         for _, slot in ipairs(COOLTIP_GEARSLOTS) do
             if slot == originalTooltip[row].text then
                 isGear = true
@@ -68,22 +69,22 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
         return
     end
 
---    find out if this gear has set bonuses where we end the stats section early
+    -- find out if this gear has set bonuses where we end the stats section early
     for row = stats.StartRow, stats.OrigLength do
         if string.find(originalTooltip[row].text, "Set: ", 1, true) then
             stats.EndRow = row - 1
             setbonuses.StartRow = row
             break
         end
---         if the above test never succeeds, the stats row
---         will just naturally be the last row of the tooltip
+        -- if the above test never succeeds, the stats row
+        -- will just naturally be the last row of the tooltip
         stats.EndRow = row
     end
 
---      check if has Armor, Damage, Durability, Stats, Slots...
---     Get all stats, enchants, and meta info like dura, lv
+    -- check if has Armor, Damage, Durability, Stats, Slots...
+    -- Get all stats, enchants, and meta info like dura, lv
 
---     Correct lines and then sort them, sort lines, put enchant, then dura, lv at bottom
+    -- Correct lines and then sort them, sort lines, put enchant, then dura/lv/etc at bottom
     local fixedTooltips = {}
     local unchangedTooltips = {}
     for i = 1, stats.EndRow - stats.StartRow + 1 do
@@ -100,15 +101,15 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
         elseif string.find(originalTooltip[row].text, "Chance on Hit:", 1, true) or
             string.find(originalTooltip[row].text, "Use:", 1, true)
         then
-            -- These special effects need to be left as is
-            -- and the following checks not run on them.
+            -- These effects need to be left as is
+            -- continue
         else
             -- Check against our db\Stats.lua table to see if this is a stat we can fix
-            -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
             for _, statSet in {
                 { stats=COOLTIP_PRIM_STATS,        color=COOLTIP_PRIM_STATS_COLOR },
                 { stats=COOLTIP_SEC_STATS.vanilla, color=COOLTIP_SEC_STATS_COLOR },
             } do
+                -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
                 for _,stat in statSet.stats do
                     if string.find(originalTooltip[row].text, stat[1], 1, true) then
                         local suffixRemoved = string.gsub(originalTooltip[row].text, stat[3], "")
@@ -175,9 +176,9 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
 end
 
 function Cooltip.parseEnchant(row)
-    if row.color.r == 0 and
-        row.color.b == 0 and
-        row.color.g > 0.999
+    if row.color.r == 0 and  --
+        row.color.b == 0 and -- Green
+        row.color.g > 0.999  --
     then
         for _, item in ipairs(COOLTIP_ENCHANTS) do
             if string.lower(row.text) == string.lower(item[1]) then
