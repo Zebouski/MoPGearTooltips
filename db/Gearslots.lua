@@ -11,7 +11,9 @@ COOLTIP_GEARSLOTS = {
   "Feet",
   "Finger",
   "Trinket",
-  "Ranged",
+  "Ranged", -- Bow
+  "Crossbow",
+  "Gun",
   "Wand",
   "Relic",
   "Two-Hand",
@@ -19,5 +21,4 @@ COOLTIP_GEARSLOTS = {
   "One-Hand",
   "Off Hand",
   "Held In Off-hand",
-  "Crossbow",
 }
