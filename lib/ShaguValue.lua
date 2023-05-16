@@ -16,7 +16,7 @@ SetItemRef = function(link, text, button)
   local item, _, id = string.find(link, "item:(%d+):.*")
   HookSetItemRef(link, text, button)
   if not IsAltKeyDown() and not IsShiftKeyDown() and not IsControlKeyDown() and item then
-    adjustTooltip(ItemRefTooltip, "ItemRefTooltip")
+    Cooltip.adjustTooltip(ItemRefTooltip, "ItemRefTooltip")
   end
 end
 
