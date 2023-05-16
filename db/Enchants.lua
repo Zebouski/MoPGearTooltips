@@ -1,4 +1,4 @@
-TOOLTIP_ENCHANTS = {
+COOLTIP_ENCHANTS = {
   {"HP +100", "+100 Health"},
   {"Mana +150", "+150 Mana"},
   {"Armor +125", "+125 Armor"},
@@ -9,21 +9,22 @@ TOOLTIP_ENCHANTS = {
   {"Spirit +8", "+8 Spirit"},
   {"Dodge +1%", "+1% Dodge"},
   {"Stamina +16 and Armor +100", "+16 Stamina\n+100 Armor"},
-  {"Healing +31 and 5 mana per 5 sec.", "+31 Healing Spells\n+5 mana every 5 sec."},
+  {"Healing +31 and 5 mana per 5 sec.", "+31 Spell Healing\n+5 Mana Per 5s"},
   {"Spell Damage +15 and +1% Spell Critical Strike", "+15 Spell Power\n+1% Spell Critical Strike"},
   {"Attack Power +26 and +1% Critical Strike", "+26 Attack Power\n+1% Critical Strike"},
   {"Healing and Spell Damage +8", "+8 Spell Power"},
   {"Attack Speed +1%", "+1% Attack Speed"},
   {"Healing and Spell Damage +18/Spell Hit +1%", "+18 Spell Power\n+1% Spell Hit"},
-  {"Mana Regen +4/Stamina +10/Healing Spells +24", "+10 Stamina\n+4 mana every 5 sec\n+24 Healing Spells"},
+  {"Mana Regen +4/Stamina +10/Healing Spells +24", "+10 Stamina\n+4 Mana Per 5s\n+24 Spell Healing"},
   {"Healing and Spell Damage +18/Stamina +10", "+10 Stamina\n+18 Spell Power"},
-  {"Intellect +10/Stamina +10/Healing Spells +24", "+10 Stamina\n+10 Intellect\n+24 Healing Spells"},
+  {"Intellect +10/Stamina +10/Healing Spells +24", "+10 Stamina\n+10 Intellect\n+24 Spell Healing"},
   {"Attack Power +28/Dodge +1%", "+28 Attack Power\n+1% Dodge"},
   {"Ranged Attack Power +24/Stamina +10/Hit +1%", "+10 Stamina\n+24 Ranged Attack Power\n+1% Hit"},
   {"Healing and Spell Damage +13/Intellect +15", "+15 Intellect\n+13 Spell Power"},
-  {"Defense +7/Stamina +10/Healing Spells +24", "+10 Stamina\n+7 Defense\n+24 Healing Spells"},
+  {"Defense +7/Stamina +10/Healing Spells +24", "+10 Stamina\n+7 Defense\n+24 Spell Healing"},
   {"Defense +7/Stamina +10/Block Value +15", "+10 Stamina\n+7 Defense\n+15 Block Value"},
   {"+18 Spell Damage and Healing", "+18 Spell Power"},
+  {"+33 Healing Spells", "+33 Spell Healing"},
   {"Armor +10", "+10 Armor"},
   {"Armor +20", "+20 Armor"},
   {"Armor +30", "+30 Armor"},
@@ -82,8 +83,8 @@ TOOLTIP_ENCHANTS = {
   {"Defense +1", "+1 Defense"},
   {"Defense +2", "+2 Defense"},
   {"Defense +3", "+3 Defense"},
-  {"Healing Spells +24", "+24 Healing Spells"},
-  {"Mana Regen 4 per 5 sec.", "+4 mana every 5 sec"},
+  {"Healing Spells +24", "+24 Spell Healing"},
+  {"Mana Regen 4 per 5 sec.", "+4 Mana Per 5s"},
   {"Fishing +2", "+2 Fishing"},
   {"Herbalism +2", "+2 Herbalism"},
   {"Herbalism +5", "+5 Herbalism"},
@@ -99,7 +100,7 @@ TOOLTIP_ENCHANTS = {
   {"Fire Damage +20", "+20 Fire Spell Damage"},
   {"Frost Damage +20", "+20 Frost Spell Damage"},
   {"Shadow Damage +20", "+20 Shadow Spell Damage"},
-  {"Healing Spells +30", "+30 Healing Spells"},
+  {"Healing Spells +30", "+30 Spell Healing"},
   {"Beastslaying +2", "+2 Beastslaying"},
   {"Beastslaying +6", "+6 Beastslaying"},
   {"Elemental Slayer +6", "+6 Elemental Slayer"},
@@ -114,7 +115,7 @@ TOOLTIP_ENCHANTS = {
   {"Frost Spell Damage +7", "+7 Frost Spell Damage"},
   {"Icy Weapon"},
   {"Spell Damage +30", "+30 Spell Power"},
-  {"Healing Spells +55", "+55 Healing Spells"},
+  {"Healing Spells +55", "+55 Spell Healing"},
   {"Weapon Chain - Immune Disarm"},
   {"Crusader"},
   {"Fiery Weapon"},
@@ -201,7 +202,7 @@ TOOLTIP_ENCHANTS = {
 }
 
 -- dont need fixing
-TOOLTIP_ENCHANTS_GOODBOYS = {
+COOLTIP_ENCHANTS_GOODBOYS = {
   {"+5 Arcane Resistance"},
   {"+5 Fire Resistance"},
   {"+7 Fire Resistance"},
@@ -217,6 +218,5 @@ TOOLTIP_ENCHANTS_GOODBOYS = {
   {"+1 All Resistances"},
   {"+3 All Resistances"},
   {"+5 All Resistances"},
-  {"+33 Healing Spells"},
   {"+30 Attack Power"},
 }

@@ -1,0 +1,22 @@
+COOLTIP_GEARSLOTS = {
+  "Head",
+  "Neck",
+  "Shoulder",
+  "Back",
+  "Chest",
+  "Wrist",
+  "Hands",
+  "Waist",
+  "Legs",
+  "Feet",
+  "Finger",
+  "Trinket",
+  "Ranged",
+  "Wand",
+  "Relic",
+  "Two-Hand",
+  "Main Hand",
+  "One-Hand",
+  "Off Hand",
+  "Held In Off-hand"
+}
