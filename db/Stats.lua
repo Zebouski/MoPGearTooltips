@@ -228,3 +228,11 @@ for _,weapon in pairs( { "Swords", "Two-handed Swords", "Axes", "Two-handed Axes
     })
 end
 
+for _,profession in pairs( { "Skinning", "Mining", "Herbalism", "Engineering" } ) do
+    table.insert(COOLTIP_SEC_STATS.vanilla, {
+        profession .. " +",
+        profession .. " %+",
+        "%.",
+        profession .. " Skill"
+    })
+end
