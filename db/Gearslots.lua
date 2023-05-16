@@ -18,5 +18,6 @@ COOLTIP_GEARSLOTS = {
   "Main Hand",
   "One-Hand",
   "Off Hand",
-  "Held In Off-hand"
+  "Held In Off-hand",
+  "Crossbow",
 }
