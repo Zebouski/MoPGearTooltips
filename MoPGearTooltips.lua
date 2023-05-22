@@ -202,14 +202,13 @@ function Cooltip.parseEnchant(row)
         row.color.b == 0 and -- Green
         row.color.g > 0.999  --
     then
-        for _, item in ipairs(COOLTIP_ENCHANTS) do
-            if string.lower(row.text) == string.lower(item[1]) then
-                return true, item[2] or item[1]
-            end
-        end
-        for _, item in ipairs(COOLTIP_ENCHANTS_GOODBOYS) do
-            if string.lower(row.text) == string.lower(item[1]) then
-                return true, item[2] or item[1]
+        for _, enchantSet in {
+            COOLTIP_ENCHANTS.vanilla
+        } do
+            for _, item in ipairs(enchantSet) do
+                if string.lower(row.text) == string.lower(item[1]) then
+                    return true, item[2] or item[1]
+                end
             end
         end
     end
