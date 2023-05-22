@@ -221,7 +221,7 @@ COOLTIP_ENCHANTS = {
   wotlk={},
   epoch={},
   turtle={
-    {"+14 Stamina"}
-    {"Increase Spell Damage +12", "+12 Spell Power"}
+    {"+14 Stamina"},
+    {"Increase Spell Damage +12", "+12 Spell Power"},
   },
 }
