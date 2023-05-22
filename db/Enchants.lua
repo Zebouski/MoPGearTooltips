@@ -219,4 +219,5 @@ COOLTIP_ENCHANTS_GOODBOYS = {
   {"+3 All Resistances"},
   {"+5 All Resistances"},
   {"+30 Attack Power"},
+  {"+14 Stamina"},
 }
