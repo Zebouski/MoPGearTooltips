@@ -201,7 +201,7 @@ function Cooltip.parseEnchant(row)
         row.color.g > 0.999  --
     then
         for _, enchantSet in {
-            COOLTIP_ENCHANTS.vanilla
+            COOLTIP_ENCHANTS.vanilla,
         } do
             for _, item in ipairs(enchantSet) do
                 if string.lower(row.text) == string.lower(item[1]) then
