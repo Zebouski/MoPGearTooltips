@@ -1,4 +1,4 @@
-# MoPGearTooltips for 1.12
+# MoPGearTooltips for 3.3.5
 Post-launch Vanilla through Cata had a really messy afterthought of a format for how non-primary gear stats were displayed on items.
 MoP fixed this by incorporating every regular "Equip:" stat back alongside the primary stats, just colored green.
 
