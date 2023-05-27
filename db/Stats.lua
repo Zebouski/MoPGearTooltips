@@ -207,6 +207,13 @@ COOLTIP_SEC_STATS = {
         "%.",
         "Haste"
     },
+    { -- In 1.12, just Azure Silk Belt
+      -- On Turtle, this effect appears on multiple pieces of gear and stacks
+        "Increases swim speed by ",
+        "Increases swim speed by ",
+        "%.",
+        "Swim Speed"
+    },
   }
 }
 
