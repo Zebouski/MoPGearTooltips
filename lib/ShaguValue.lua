@@ -20,6 +20,18 @@ SetItemRef = function(link, text, button)
   end
 end
 
+local HookSetHyperlink = GameTooltip.SetHyperlink
+function GameTooltip.SetHyperlink(self, arg1)
+  if arg1 then
+    local _, _, linktype = string.find(arg1, "^(.-):(.+)$")
+    if linktype == "item" then
+      GameTooltip.itemLink = arg1
+    end
+  end
+
+  return HookSetHyperlink(self, arg1)
+end
+
 local HookSetBagItem = GameTooltip.SetBagItem
 function GameTooltip.SetBagItem(self, container, slot)
   GameTooltip.itemLink = GetContainerItemLink(container, slot)
