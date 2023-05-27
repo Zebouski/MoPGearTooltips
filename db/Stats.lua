@@ -43,6 +43,12 @@ COOLTIP_PRIM_STATS = {
         " Spirit",
         "Spirit",
     },
+    { -- Jagged Obsidian Shield
+        "All Resistances.",
+        "%+",
+        " All Resistances%.",
+        "All Resistances"
+    },
 }
 
 COOLTIP_SEC_STATS_COLOR = {
@@ -127,8 +133,8 @@ COOLTIP_SEC_STATS = {
         "%.",
         "Spell Healing"
     },
-    {
-        "Healing Spells", -- as found on Of Healing gear
+    { -- Another variation, as found on "Of Healing" gear
+        "Healing Spells",
         "%+",
         " Healing Spells",
         "Spell Healing"
@@ -163,22 +169,19 @@ COOLTIP_SEC_STATS = {
         "%.",
         "Spell Penetration"
     },
-    -- Ironbark Shield
-    {
+    { -- Ironbark Shield
         "Improves your chance to get a critical strike with Nature spells by ",
         "Improves your chance to get a critical strike with Nature spells by ",
         "%.",
         "Nature Spell Critical Strike"
     },
-    -- Priest T1
-    {
+    { -- Priest T1
         "Improves your chance to get a critical strike with Holy spells by ",
         "Improves your chance to get a critical strike with Holy spells by ",
         "%.",
         "Holy Spell Critical Strike"
     },
-    -- Benediction
-    {
+    { -- Benediction
         "Increases the critical effect chance of your Holy spells by ",
         "Increases the critical effect chance of your Holy spells by ",
         "%.",
