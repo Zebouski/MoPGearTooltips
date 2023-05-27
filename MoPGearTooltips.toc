@@ -1,4 +1,4 @@
-## Interface: 11200
+## Interface: 11403
 ## Title: MoP Gear Tooltips
 ## Author: Zaas
 ## Version: 0.6.5
