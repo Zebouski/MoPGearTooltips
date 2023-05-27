@@ -110,7 +110,7 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
             -- Check against our db\Stats.lua table to see if this is a stat we can fix
             for _, statSet in ipairs({
                 { stats=COOLTIP_PRIM_STATS,        color=COOLTIP_PRIM_STATS_COLOR },
-                { stats=COOLTIP_SEC_STATS.vanilla, color=COOLTIP_SEC_STATS_COLOR },
+                { stats=COOLTIP_SEC_STATS.wotlk, color=COOLTIP_SEC_STATS_COLOR },
             }) do
                 -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
                 for _,stat in ipairs(statSet.stats) do
@@ -170,7 +170,7 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
     for row = setbonuses.StartRow, stats.OrigLength do
         for _, statSet in {
                 { stats=COOLTIP_PRIM_STATS,        color=COOLTIP_PRIM_STATS_COLOR },
-                { stats=COOLTIP_SEC_STATS.vanilla, color=COOLTIP_SEC_STATS_COLOR },
+                { stats=COOLTIP_SEC_STATS.wotlk, color=COOLTIP_SEC_STATS_COLOR },
         } do
             -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
             for _,stat in statSet.stats do
@@ -204,7 +204,7 @@ function Cooltip.parseEnchant(row)
         row.color.g > 0.999  --
     then
         for _, enchantSet in ipairs({
-            COOLTIP_ENCHANTS.vanilla,
+            COOLTIP_ENCHANTS.wotlk,
         }) do
             for _, item in ipairs(enchantSet) do
                 if string.lower(row.text) == string.lower(item[1]) then
