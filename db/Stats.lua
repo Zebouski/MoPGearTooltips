@@ -43,6 +43,12 @@ COOLTIP_PRIM_STATS = {
         " Spirit",
         "Spirit",
     },
+    { -- Jagged Obsidian Shield
+        "All Resistances.",
+        "%+",
+        " All Resistances%.",
+        "All Resistances"
+    },
 }
 
 COOLTIP_SEC_STATS_COLOR = {
@@ -127,8 +133,8 @@ COOLTIP_SEC_STATS = {
         "%.",
         "Spell Healing"
     },
-    {
-        "Healing Spells", -- as found on Of Healing gear
+    { -- Another variation, as found on "Of Healing" gear
+        "Healing Spells",
         "%+",
         " Healing Spells",
         "Spell Healing"
@@ -163,33 +169,38 @@ COOLTIP_SEC_STATS = {
         "%.",
         "Spell Penetration"
     },
-    -- Ironbark Shield
-    {
+    { -- Ironbark Shield
         "Improves your chance to get a critical strike with Nature spells by ",
         "Improves your chance to get a critical strike with Nature spells by ",
         "%.",
         "Nature Spell Critical Strike"
     },
-    -- Priest T1
-    {
+    { -- Priest T1
         "Improves your chance to get a critical strike with Holy spells by ",
         "Improves your chance to get a critical strike with Holy spells by ",
         "%.",
         "Holy Spell Critical Strike"
     },
-    -- Benediction
-    {
+    { -- Benediction
         "Increases the critical effect chance of your Holy spells by ",
         "Increases the critical effect chance of your Holy spells by ",
         "%.",
         "Holy Spell Critical Strike"
+    },
+
+    -- Other
+    { -- Carrot on a Stick. Standardized with enchants.
+        "Increases mount speed by ",
+        "Increases mount speed by ",
+        "%.",
+        "Mount Speed"
     },
   },
   turtle={
     {
+        " of the target's armor.", -- BRE's effect gets caught if we search the first term
         "Your attacks ignore ",
-        "Your attacks ignore ",
-        " of the target's armor",
+        " of the target's armor.",
         "Armor Penetration"
     },
     {
@@ -203,6 +214,13 @@ COOLTIP_SEC_STATS = {
         "Increases your attack and casting speed by ",
         "%.",
         "Haste"
+    },
+    { -- In 1.12, just Azure Silk Belt
+      -- On Turtle, this effect appears on multiple pieces of gear and stacks
+        "Increases swim speed by ",
+        "Increases swim speed by ",
+        "%.",
+        "Swim Speed"
     },
   }
 }
