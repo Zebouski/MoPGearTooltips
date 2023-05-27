@@ -9,16 +9,19 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
     -- Collect all rows into lua table for analization
     local originalTooltip = {}
     for row = 1, 30 do
-        local rowtext = _G[tooltipTypeStr .. 'TextLeft' .. row]:GetText()
-        if rowtext then
-            originalTooltip[row] = {}
-            originalTooltip[row].text = rowtext
-            originalTooltip[row].color = {}
-            originalTooltip[row].color.r,
-            originalTooltip[row].color.g,
-            originalTooltip[row].color.b,
-            originalTooltip[row].color.a
-                = _G[tooltipTypeStr .. 'TextLeft' .. row]:GetTextColor()
+        local tooltipRow = _G[tooltipTypeStr .. 'TextLeft' .. row]
+        if tooltipRow then
+            local rowtext = tooltipRow:GetText()
+            if rowtext then
+                originalTooltip[row] = {}
+                originalTooltip[row].text = rowtext
+                originalTooltip[row].color = {}
+                originalTooltip[row].color.r,
+                originalTooltip[row].color.g,
+                originalTooltip[row].color.b,
+                originalTooltip[row].color.a
+                    = tooltipRow:GetTextColor()
+            end
         end
     end
 
@@ -105,12 +108,12 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
             -- continue
         else
             -- Check against our db\Stats.lua table to see if this is a stat we can fix
-            for _, statSet in {
+            for _, statSet in ipairs({
                 { stats=COOLTIP_PRIM_STATS,        color=COOLTIP_PRIM_STATS_COLOR },
                 { stats=COOLTIP_SEC_STATS.vanilla, color=COOLTIP_SEC_STATS_COLOR },
-            } do
+            }) do
                 -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
-                for _,stat in statSet.stats do
+                for _,stat in ipairs(statSet.stats) do
                     if string.find(originalTooltip[row].text, stat[1], 1, true) then
                         local suffixRemoved = string.gsub(originalTooltip[row].text, stat[3], "")
                         local foundValue = string.gsub(suffixRemoved, stat[2], "")
@@ -200,9 +203,9 @@ function Cooltip.parseEnchant(row)
         row.color.b == 0 and -- Green
         row.color.g > 0.999  --
     then
-        for _, enchantSet in {
+        for _, enchantSet in ipairs({
             COOLTIP_ENCHANTS.vanilla,
-        } do
+        }) do
             for _, item in ipairs(enchantSet) do
                 if string.lower(row.text) == string.lower(item[1]) then
                     return true, item[2] or item[1]

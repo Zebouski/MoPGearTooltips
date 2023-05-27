@@ -52,6 +52,12 @@ COOLTIP_SEC_STATS_COLOR = {
 }
 COOLTIP_SEC_STATS = {
   wotlk={
+    {
+        "Increases attack power by",
+        "Increases attack power by ",
+        "%.",
+        "Attack Power"
+    },
   },
   tbc={
   },
