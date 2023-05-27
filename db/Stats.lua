@@ -190,9 +190,9 @@ COOLTIP_SEC_STATS = {
   },
   turtle={
     {
+        " of the target's armor.", -- BRE's effect gets caught if we search the first term
         "Your attacks ignore ",
-        "Your attacks ignore ",
-        " of the target's armor",
+        " of the target's armor.",
         "Armor Penetration"
     },
     {
