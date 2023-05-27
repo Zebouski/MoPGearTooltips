@@ -43,8 +43,10 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
         end
         local isEnchant, _ = Cooltip.parseEnchant(originalTooltip[row])
         if isEnchant or
+            string.find(originalTooltip[row].text, "Socket", 1, true) or -- TBC
             string.find(originalTooltip[row].text, "Durability", 1, true) or
             string.find(originalTooltip[row].text, "Classes:", 1, true) or
+            string.find(originalTooltip[row].text, "Item Level", 1, true) or -- WotLK
             string.find(originalTooltip[row].text, "Requires Level", 1, true) or
             string.find(originalTooltip[row].text, "—", 1, true) or -- emdash used only in rep reqs, like Requires The League of Arathor — Exalted
             string.find(originalTooltip[row].text, "Equip:", 1, true) or
@@ -58,7 +60,8 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
                 row > 2 and -- don't catch -'s in the item name nor turtle xmog
                 string.find(originalTooltip[row].text, "-", 1, true) and -- Catch items starting with negative stats
                 not string.find(originalTooltip[row].text, "Damage", 1, true) and -- But don't count Weapon Damage lines
-                not string.find(originalTooltip[row].text, "Hand", 1, true) -- or the equip slot text Two-Hand, One-Hand
+                not string.find(originalTooltip[row].text, "Hand", 1, true) and -- or the equip slot text Two-Hand, One-Hand
+                not string.find(originalTooltip[row].text, "Equipped", 1, true) -- or gear marked Unique-Equipped
             )
         then
             -- We have found the first case of a +X Stat line,
@@ -169,13 +172,13 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
     -- A repeat of code above, but compacted and with checks only relevant for sets
     -- Could use refactor
     for row = setbonuses.StartRow, stats.OrigLength do
-        for _, statSet in {
+        for _, statSet in ipairs({
                 { stats=COOLTIP_PRIM_STATS,        color=COOLTIP_PRIM_STATS_COLOR },
                 { stats=COOLTIP_SEC_STATS.vanilla, color=COOLTIP_SEC_STATS_COLOR },
                 { stats=COOLTIP_SEC_STATS.turtle,  color=COOLTIP_SEC_STATS_COLOR },
-        } do
+        }) do
             -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
-            for _,stat in statSet.stats do
+            for _,stat in ipairs(statSet.stats) do
                 if string.find(originalTooltip[row].text, stat[1], 1, true) then
                     local suffixRemoved = string.gsub(originalTooltip[row].text, stat[3], "")
                     local foundValue = string.gsub(suffixRemoved, stat[2], "")
