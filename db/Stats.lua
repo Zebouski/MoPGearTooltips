@@ -187,6 +187,14 @@ COOLTIP_SEC_STATS = {
         "%.",
         "Holy Spell Critical Strike"
     },
+
+    -- Other
+    { -- Carrot on a Stick. Standardized with enchants.
+        "Increases mount speed by ",
+        "Increases mount speed by ",
+        "%.",
+        "Mount Speed"
+    },
   },
   turtle={
     {
