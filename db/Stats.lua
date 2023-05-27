@@ -58,11 +58,82 @@ COOLTIP_SEC_STATS_COLOR = {
 }
 COOLTIP_SEC_STATS = {
   wotlk={
+    -- Tank Stats
+    {
+        "Increases defense rating by ",
+        "Increases defense rating by ",
+        "%.",
+        "Defense Rating"
+    },
+    {
+        "Increases the block value of your shield by ",
+        "Increases the block value of your shield by ",
+        "%.",
+        "Block Value"
+    },
+    {
+        "Increases your dodge rating by ",
+        "Increases your dodge rating by ",
+        "%.",
+        "Dodge Rating"
+    },
+    {
+        "Improves your resilience rating by ",
+        "Improves your resilience rating by ",
+        "%.",
+        "Resilience Rating"
+    },
+
+    -- DPS Stats
     {
         "Increases attack power by",
         "Increases attack power by ",
         "%.",
         "Attack Power"
+    },
+    {
+        "Improves critical strike rating by ",
+        "Improves critical strike rating by ",
+        "%.",
+        "Critical Strike Rating"
+    },
+    {
+        "Improves hit rating by ",
+        "Improves hit rating by ",
+        "%.",
+        "Hit Rating"
+    },
+    {
+        "Increases your expertise rating by ",
+        "Increases your expertise rating by ",
+        "%.",
+        "Expertise Rating"
+    },
+
+    -- Caster Stats
+    {
+        "Increases spell power by",
+        "Increases spell power by ",
+        "%.",
+        "Spell Power"
+    },
+    {
+        "Increases your spell penetration by ",
+        "Increases your spell penetration by ",
+        "%.",
+        "Spell Penetration"
+    },
+    {
+        " health per ",
+        "Restores ",
+        " health per 5 sec%.",
+        "Health per 5s"
+    },
+    {
+        " mana per ",
+        "Restores ",
+        " mana per 5 sec%.",
+        "Mana Per 5s"
     },
   },
   tbc={
