@@ -269,6 +269,18 @@ COOLTIP_SEC_STATS = {
   },
   turtle={
     {
+        " of damage dealt is returned as healing.",
+        "",
+        " of damage dealt is returned as healing.",
+        "Vampirism"
+    },
+    {
+        "Reduces your chance to get critically hit by ",
+        "Reduces your chance to get critically hit by ",
+        "%.",
+        "Resilience"
+    },
+    {
         " of the target's armor.", -- BRE's effect gets caught if we search the first term
         "Your attacks ignore ",
         " of the target's armor.",
