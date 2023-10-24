@@ -252,7 +252,7 @@ COOLTIP_SEC_STATS = {
         "%.",
         "Holy Spell Critical Strike"
     },
-    { -- Benediction
+    { -- Benediction, Circle of Hope
         "Increases the critical effect chance of your Holy spells by ",
         "Increases the critical effect chance of your Holy spells by ",
         "%.",
