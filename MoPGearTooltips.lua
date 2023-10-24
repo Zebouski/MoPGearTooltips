@@ -118,13 +118,14 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
             }) do
                 -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
                 for _,stat in ipairs(statSet.stats) do
-                    if string.find(originalTooltip[row].text, stat[1], 1, true) then
+                    if string.find(originalTooltip[row].text, stat[1], 1, false) then
+                        local sign = string.find(originalTooltip[row].text, "^%-", 1, false) and "-" or "+"
                         local suffixRemoved = string.gsub(originalTooltip[row].text, stat[3], "")
                         local foundValue = string.gsub(suffixRemoved, stat[2], "")
                         if foundValue then
                             foundValue = string.gsub(foundValue, "Equip: ", "")
                             table.insert(fixedTooltips, {
-                                text="+" .. foundValue .. " " .. stat[4],
+                                text=sign .. foundValue .. " " .. stat[4],
                                 color=statSet.color,
                             })
                             rowSlotted = true
