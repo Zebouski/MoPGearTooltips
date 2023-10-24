@@ -14,32 +14,32 @@ COOLTIP_PRIM_STATS_COLOR = {
 }
 COOLTIP_PRIM_STATS = {
     {
-        "Strength",
-        "%+",
+        "^[%+%-]%d+ Strength$",
+        "[%+%-]",
         " Strength",
         "Strength",
     },
     {
-        "Agility",
-        "%+",
+        "^[%+%-]%d+ Agility$",
+        "[%+%-]",
         " Agility",
         "Agility",
     },
     {
-        "Stamina",
-        "%+",
+        "^[%+%-]%d+ Stamina$",
+        "[%+%-]",
         " Stamina",
         "Stamina",
     },
     {
-        "Intellect",
-        "%+",
+        "^[%+%-]%d+ Intellect$",
+        "[%+%-]",
         " Intellect",
         "Intellect",
     },
     {
-        "Spirit",
-        "%+",
+        "^[%+%-]%d+ Spirit$",
+        "[%+%-]",
         " Spirit",
         "Spirit",
     },
@@ -310,8 +310,8 @@ COOLTIP_SEC_STATS = {
 
 for _,school in pairs( { "Nature", "Frost", "Fire", "Arcane", "Shadow" } ) do
     table.insert(COOLTIP_PRIM_STATS, {
-        school .. " Resistance",
-        "%+",
+        "^[%+%-]%d+" .. school .. " Resistance$",
+        "[%+%-]",
         " " .. school .. " Resistance",
         school .. " Resistance"
     })
@@ -328,7 +328,7 @@ end
 
 for _,weapon in pairs( { "Swords", "Two-handed Swords", "Axes", "Two-handed Axes", "Maces", "Two-handed Maces", "Daggers", "Fist Weapons", "Polearms", "Staves", "Fishing" } ) do
     table.insert(COOLTIP_SEC_STATS.vanilla, {
-        "Increased " .. weapon .. " +",
+        "Increased " .. weapon .. " %+",
         "Increased " .. weapon .. " %+",
         "%.",
         weapon .. " Skill"
@@ -337,7 +337,7 @@ end
 
 for _,profession in pairs( { "Skinning", "Mining", "Herbalism", "Engineering" } ) do
     table.insert(COOLTIP_SEC_STATS.vanilla, {
-        profession .. " +",
+        profession .. " %+",
         profession .. " %+",
         "%.",
         profession .. " Skill"
