@@ -14,31 +14,31 @@ COOLTIP_PRIM_STATS_COLOR = {
 }
 COOLTIP_PRIM_STATS = {
     {
-        "^[%+%-]%d+ Strength$",
+        "[%+%-]%d+ Strength(%.?)$",
         "[%+%-]",
         " Strength",
         "Strength",
     },
     {
-        "^[%+%-]%d+ Agility$",
+        "[%+%-]%d+ Agility(%.?)$",
         "[%+%-]",
         " Agility",
         "Agility",
     },
     {
-        "^[%+%-]%d+ Stamina$",
+        "[%+%-]%d+ Stamina(%.?)$",
         "[%+%-]",
         " Stamina",
         "Stamina",
     },
     {
-        "^[%+%-]%d+ Intellect$",
+        "[%+%-]%d+ Intellect(%.?)$",
         "[%+%-]",
         " Intellect",
         "Intellect",
     },
     {
-        "^[%+%-]%d+ Spirit$",
+        "[%+%-]%d+ Spirit(%.?)$",
         "[%+%-]",
         " Spirit",
         "Spirit",
@@ -173,7 +173,7 @@ COOLTIP_SEC_STATS = {
 
     -- DPS Stats
     {
-        " Attack Power.",
+        " Attack Power%.",
         "%+",
         " Attack Power%.",
         "Attack Power"
@@ -189,6 +189,12 @@ COOLTIP_SEC_STATS = {
         "Improves your chance to hit by ",
         "%.",
         "Hit"
+    },
+    { -- Might of Cenarius
+        " Weapon Damage(%.?)$",
+        "%+",
+        " Weapon Damage%.",
+        "Weapon Damage",
     },
 
     -- Caster Stats
@@ -269,6 +275,12 @@ COOLTIP_SEC_STATS = {
   },
   turtle={
     {
+        " Attack Power in Cat, Bear, Dire Bear, and Moonkin forms only%.",
+        "%+",
+        " Attack Power in Cat, Bear, Dire Bear, and Moonkin forms only%.",
+        "Feral Attack Power"
+    },
+    {
         " of damage dealt is returned as healing.",
         "",
         " of damage dealt is returned as healing.",
@@ -310,7 +322,7 @@ COOLTIP_SEC_STATS = {
 
 for _,school in pairs( { "Nature", "Frost", "Fire", "Arcane", "Shadow" } ) do
     table.insert(COOLTIP_PRIM_STATS, {
-        "^[%+%-]%d+" .. school .. " Resistance$",
+        "^[%+%-]%d+ " .. school .. " Resistance$",
         "[%+%-]",
         " " .. school .. " Resistance",
         school .. " Resistance"

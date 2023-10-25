@@ -180,7 +180,7 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
         }) do
             -- stat = { searchStr, valuePrefixStr, valueSuffixStr, newSuffixStr }
             for _,stat in ipairs(statSet.stats) do
-                if string.find(originalTooltip[row].text, stat[1], 1, true) then
+                if string.find(originalTooltip[row].text, stat[1], 1, false) then
                     local suffixRemoved = string.gsub(originalTooltip[row].text, stat[3], "")
                     local foundValue = string.gsub(suffixRemoved, stat[2], "")
                     if foundValue then
