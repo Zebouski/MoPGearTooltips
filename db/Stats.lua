@@ -52,9 +52,9 @@ COOLTIP_PRIM_STATS = {
 }
 
 COOLTIP_SEC_STATS_COLOR = {
-    r=0.44,
-    g=0.84,
-    b=1.00,
+    r=0.00,
+    g=1.00,
+    b=0.00,
 }
 COOLTIP_SEC_STATS = {
   wotlk={
