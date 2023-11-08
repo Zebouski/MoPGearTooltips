@@ -1,3 +1,8 @@
+COOLTIP_ENCHANTS_COLOR = {
+    r=0.35,
+    g=0.90,
+    b=1.00,
+}
 COOLTIP_ENCHANTS = {
   vanilla={
     {"HP +100", "+100 Health"},

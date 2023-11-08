@@ -101,7 +101,8 @@ function Cooltip.adjustTooltip(tooltip, tooltipTypeStr)
         if isEnchant then
             table.insert(unchangedTooltips, {
                 text=replaceStr,
-                color=originalTooltip[row].color
+--              color=originalTooltip[row].color
+                color=COOLTIP_ENCHANTS_COLOR
             })
             rowSlotted = true
         elseif string.find(originalTooltip[row].text, "Chance on Hit:", 1, true) or
