@@ -287,8 +287,8 @@ COOLTIP_SEC_STATS = {
         "Vampirism"
     },
     {
-        "Reduces your chance to get critically hit by ",
-        "Reduces your chance to get critically hit by ",
+        "Reduces damage taken from critical hits and damage over time effects by ",
+        "Reduces damage taken from critical hits and damage over time effects by ",
         "%.",
         "Resilience"
     },
@@ -299,7 +299,7 @@ COOLTIP_SEC_STATS = {
         "Armor Penetration"
     },
     {
-        " of your Mana regeneration to continue while casting.",
+        " %d%d?%% of your Mana regeneration to continue while casting.", -- matches 2 digits but not darkmoon card's +100%.
         "Allows ",
         " of your Mana regeneration to continue while casting.",
         "Casting Mana Regen"
