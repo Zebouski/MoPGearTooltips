@@ -251,3 +251,46 @@ end)
 ShoppingTooltip2:SetScript("OnShow", function()
     Cooltip.adjustTooltip(ShoppingTooltip2, "ShoppingTooltip2")
 end)
+
+Cooltip.HookAddonOrVariable = function(addon, func)
+    local lurker = CreateFrame("Frame", nil)
+    lurker.func = func
+    lurker:RegisterEvent("ADDON_LOADED")
+    lurker:RegisterEvent("VARIABLES_LOADED")
+    lurker:RegisterEvent("PLAYER_ENTERING_WORLD")
+    lurker:SetScript("OnEvent",function()
+        if IsAddOnLoaded(addon) or getglobal(addon) then
+            this:func()
+            this:UnregisterAllEvents()
+        end
+    end)
+end
+
+Cooltip.HookAddonOrVariable("AtlasLoot", function()
+    local atlas = CreateFrame("Frame", nil, AtlasLootTooltip)
+    local atlas2 = CreateFrame("Frame", nil, AtlasLootTooltip2)
+
+    atlas:SetScript("OnShow", function()
+        if GetMouseFocus().dressingroomID and GetMouseFocus().dressingroomID ~= 0 and
+                strsub(GetMouseFocus().itemID or "", 1, 1) ~= "s" and strsub(GetMouseFocus().itemID or "", 1, 1) ~= "e" then
+            local itemName, itemString, itemQuality = GetItemInfo(GetMouseFocus().dressingroomID)
+            if itemName then
+                local _, _, _, hex = GetItemQualityColor(tonumber(itemQuality))
+                AtlasLootTooltip.itemLink = hex.. "|H"..itemString.."|h["..itemName.."]|h|r"
+            end
+        end
+        Cooltip.adjustTooltip(AtlasLootTooltip, "AtlasLootTooltip")
+    end)
+
+    atlas2:SetScript("OnShow", function()
+        if GetMouseFocus().dressingroomID and GetMouseFocus().dressingroomID ~= 0 and
+                strsub(GetMouseFocus().itemID or "", 1, 1) ~= "s" and strsub(GetMouseFocus().itemID or "", 1, 1) ~= "e" then
+            local itemName, hyperLink, itemQuality = GetItemInfo(GetMouseFocus().dressingroomID)
+            if itemName then
+                local _, _, _, hex = GetItemQualityColor(tonumber(itemQuality))
+                AtlasLootTooltip2.itemLink = hex.. "|H"..hyperLink.."|h["..itemName.."]|h|r"
+            end
+        end
+        Cooltip.adjustTooltip(AtlasLootTooltip2, "AtlasLootTooltip2")
+    end)
+end)
