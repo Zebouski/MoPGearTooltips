@@ -1,14 +1,20 @@
 -- Source: https://github.com/shagu/ShaguValue
 -- Copied 2023-05-11
-
+local last_search_name
+local last_result
 local function GetItemLinkByName(name)
-  for itemID = 1, 25818 do
-    local itemName, hyperLink, itemQuality = GetItemInfo(itemID)
-    if (itemName and itemName == name) then
-      local _, _, _, hex = GetItemQualityColor(tonumber(itemQuality))
-      return hex.. "|H"..hyperLink.."|h["..itemName.."]|h|r"
+  if name ~= last_search_name then
+    for itemID = 1, 99999 do
+      local itemName, hyperLink, itemQuality = GetItemInfo(itemID)
+      if (itemName and itemName == name) then
+        local _, _, _, hex = GetItemQualityColor(tonumber(itemQuality))
+        last_result = hex.. "|H"..hyperLink.."|h["..itemName.."]|h|r"
+        break
+      end
     end
+    last_search_name = name
   end
+  return last_result
 end
 
 local HookSetItemRef = SetItemRef
@@ -131,4 +137,60 @@ local HookSetTradeTargetItem = GameTooltip.SetTradeTargetItem
 function GameTooltip.SetTradeTargetItem(self, index)
   GameTooltip.itemLink = GetTradeTargetItemLink(index)
   return HookSetTradeTargetItem(self, index)
+end
+
+local invtype_to_index = {
+  INVTYPE_AMMO = {0},
+  INVTYPE_HEAD = {1},
+  INVTYPE_NECK = {2},
+  INVTYPE_SHOULDER = {3},
+  INVTYPE_BODY = {4},
+  INVTYPE_CHEST = {5},
+  INVTYPE_ROBE = {5},
+  INVTYPE_WAIST = {6},
+  INVTYPE_LEGS = {7},
+  INVTYPE_FEET = {8},
+  INVTYPE_WRIST = {9},
+  INVTYPE_HAND = {10},
+  INVTYPE_FINGER = {11, 12},
+  INVTYPE_TRINKET = {13, 14},
+  INVTYPE_CLOAK = {15},
+  INVTYPE_2HWEAPON = {16, 17},
+  INVTYPE_WEAPONMAINHAND = {16, 17},
+  INVTYPE_WEAPON = {16, 17},
+  INVTYPE_WEAPONOFFHAND = {16, 17},
+  INVTYPE_HOLDABLE = {16, 17},
+  INVTYPE_SHIELD = {16, 17},
+  INVTYPE_RANGED = {18},
+  INVTYPE_RANGEDRIGHT = {18},
+  INVTYPE_TABARD = {19},
+}
+
+local function slot_index(invtype)
+  if not invtype_to_index[invtype] then
+    return
+  end
+  return unpack(invtype_to_index[invtype])
+end
+
+local HookSetMerchantCompareItem = ShoppingTooltip1.SetMerchantCompareItem
+function ShoppingTooltip1.SetMerchantCompareItem(self, buttonID, tooltipIndex)
+  local link = GameTooltip.itemLink
+  local _, _, id = string.find(link, "item:(%d+)")
+  local _, _, _, _, _, _, _, invtype = GetItemInfo(id)
+  local index1, index2 = slot_index(invtype)
+  ShoppingTooltip1.itemLink = GetInventoryItemLink("player", index1 or 0)
+  ShoppingTooltip2.itemLink = GetInventoryItemLink("Player", index2 or 0)
+  return HookSetMerchantCompareItem(self, buttonID, tooltipIndex)
+end
+
+local HookSetAuctionCompareItem = ShoppingTooltip1.SetAuctionCompareItem
+function ShoppingTooltip1.SetAuctionCompareItem(self, type, index, tooltipIndex)
+  local link = GameTooltip.itemLink
+  local _, _, id = string.find(link, "item:(%d+)")
+  local _, _, _, _, _, _, _, invtype = GetItemInfo(id)
+  local index1, index2 = slot_index(invtype)
+  ShoppingTooltip1.itemLink = GetInventoryItemLink("player", index1 or 0)
+  ShoppingTooltip2.itemLink = GetInventoryItemLink("Player", index2 or 0)
+  return HookSetAuctionCompareItem(self, type, index, tooltipIndex)
 end

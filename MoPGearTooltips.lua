@@ -226,6 +226,15 @@ Cooltip:SetScript("OnHide", function()
 end)
 
 Cooltip:SetScript("OnShow", function()
+    if aux_frame and aux_frame:IsVisible() then
+        if GetMouseFocus():GetParent() then
+            if GetMouseFocus():GetParent().row then
+                if GetMouseFocus():GetParent().row.record.link then
+                    GameTooltip.itemLink = GetMouseFocus():GetParent().row.record.link
+                end
+            end
+        end
+    end
     if GameTooltip.itemLink then
         local _, _, itemLink = string.find(GameTooltip.itemLink, "(item:%d+:%d+:%d+:%d+)");
         if not itemLink then
@@ -235,3 +244,10 @@ Cooltip:SetScript("OnShow", function()
     end
 end)
 
+ShoppingTooltip1:SetScript("OnShow", function()
+    Cooltip.adjustTooltip(ShoppingTooltip1, "ShoppingTooltip1")
+end)
+
+ShoppingTooltip2:SetScript("OnShow", function()
+    Cooltip.adjustTooltip(ShoppingTooltip2, "ShoppingTooltip2")
+end)
