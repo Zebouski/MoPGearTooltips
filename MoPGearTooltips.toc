@@ -1,7 +1,7 @@
 ## Interface: 11200
 ## Title: MoP Gear Tooltips
 ## Author: Zaas
-## Version: 0.7.2
+## Version: 0.8.0
 ## Notes: Cleans up old WoW's messy enchant texts and "Equip:" stats on gear tooltips and item links. By Zaas-TurtleWoW
 lib\ShaguValue.lua
 db\Enchants.lua
